@@ -78,10 +78,16 @@ let g:fzf_action = {
 let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 
 " add map to clipboard
-noremap <Leader>y "*y
-noremap <Leader>p "*p
-noremap <Leader>Y "+y
-noremap <Leader>P "+p
+nnoremap <leader>y "+y
+nnoremap <leader>p "+p
+vnoremap <leader>y "+y
+vnoremap <leader>y "+y
+nnoremap <leader>Y "+Y
+nnoremap <leader>P "+P
+vnoremap <leader>Y "+Y
+vnoremap <leader>Y "+Y
+
+
 
 " set relativenumber
 set number
@@ -100,7 +106,7 @@ set autoindent              " indent a new line the same amount as the line just
 filetype plugin indent on   "allow auto-indenting depending on file type
 syntax on                   " syntax highlighting
 set mouse=a                 " enable mouse click
-" set clipboard=unnamedplus   " using system clipboard
+" set clipboard+=unnamedplus   " using system clipboard
 filetype plugin on
 set cursorline              " highlight current cursorline
 set ttyfast                 " Speed up scrolling in Vim
