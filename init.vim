@@ -81,11 +81,11 @@ let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 nnoremap <leader>y "+y
 nnoremap <leader>p "+p
 vnoremap <leader>y "+y
-vnoremap <leader>y "+y
+vnoremap <leader>p "+p
 nnoremap <leader>Y "+Y
 nnoremap <leader>P "+P
 vnoremap <leader>Y "+Y
-vnoremap <leader>Y "+Y
+vnoremap <leader>P "+P
 
 
 
