@@ -1,5 +1,8 @@
 lua require('plugins')
 
+" The <Leader> key is a reference to a specific key defined by the mapleader variable.
+let mapleader=","
+
 " Enable theming support
 if (has("termguicolors"))
  set termguicolors
@@ -119,8 +122,6 @@ set scrolloff=5             " Minimal number of screen lines to keep above and b
 
 " let g:coc_global_extensions = ['coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-tsserver']
 
-" The <Leader> key is a reference to a specific key defined by the mapleader variable.
-let mapleader=","
 
 " move between panes to left/bottom/top/right
  nnoremap <C-h> <C-w>h
