@@ -70,6 +70,9 @@ return require('packer').startup(function()
     -- A dark and light Neovim theme written in Lua ported from the Visual Studio Code TokyoNight theme. 
     use {'folke/tokyonight.nvim'}
 
+    -- Soothing pastel theme for (Neo)vim
+    use { "catppuccin/nvim", as = "catppuccin" }
+
     -- True snippet and additional text editing support
     use {'neoclide/coc.nvim', branch = 'release'}
 
@@ -80,10 +83,20 @@ return require('packer').startup(function()
     -- use {'honza/vim-snippets'}
 
     -- a file explorer for neovim(netrw comes as default for neovim)
-    use {'scrooloose/nerdtree'}
+    -- use {'scrooloose/nerdtree'}
 
     -- an easy way for commenting out lines
     -- use {'preservim/nerdcommenter'}
+    --
+
+    -- A file explorer tree for neovim written in lua
+    use {
+        'nvim-tree/nvim-tree.lua',
+        requires = {
+            'nvim-tree/nvim-web-devicons', -- optional, for file icons
+        },
+        tag = 'nightly' -- optional, updated every week. (see issue #1193)
+    }
 
     -- a really handy start page with lots of customizations
     use {'mhinz/vim-startify'}
@@ -104,11 +117,17 @@ return require('packer').startup(function()
     -- use {'ludovicchabant/vim-gutentags'}
 
     -- Vim plugin, insert or delete brackets, parens, quotes in pair
-    use {'jiangmiao/auto-pairs'}
+    -- use {'jiangmiao/auto-pairs'}
 
     -- Vim plugin for intensely nerdy commenting powers
     -- use {'preservim/nerdcommenter'}
     use {'tpope/vim-commentary'}
+
+    -- autopairs for neovim written by lua
+    -- use {
+    --     "windwp/nvim-autopairs",
+    --     config = function() require("nvim-autopairs").setup {} end
+    -- }
 end)
 
 
