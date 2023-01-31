@@ -103,7 +103,8 @@ return require('packer').startup(function()
 
     -- fzf is a general-purpose command-line fuzzy finder.
     -- use {'junegunn/fzf'}
-    use {'junegunn/fzf.vim'}
+    -- use {'junegunn/fzf.vim'}
+    use { 'ibhagwan/fzf-lua' }
 
 
     -- TypeScript Highlighting
