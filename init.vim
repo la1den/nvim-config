@@ -21,8 +21,7 @@ set splitright
 set splitbelow
 
 " display total line in statusline
-set statusline=%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ Total:\ %L\ 
-
+" set statusline=%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ Total:\ %L\ 
 
 " disable netrw at the very start of your init.lua (strongly advised)
 lua vim.g.loaded_netrw = 1
@@ -37,20 +36,6 @@ lua require("nvim-tree").setup()
 set nobackup
 set nowritebackup
 
-" turn terminal to normal mode with escape
-tnoremap <Esc> <C-\><C-n>
-" start terminal in insert mode
-au BufEnter * if &buftype == 'terminal' | :startinsert | endif
-" open terminal on ctrl+n
-function! OpenTerminal()
-  split term://zsh
-  resize 10
-endfunction
-nnoremap <c-n><c-n> :call OpenTerminal()<CR>
-function! OpenVsplitTerminal()
-  vsplit term://zsh
-endfunction
-nnoremap <c-n><c-v> :call OpenVsplitTerminal()<CR>
 
 " use <space> to select a word
 " map <space> viw
@@ -69,15 +54,9 @@ nnoremap <A-k> <C-w>k
 nnoremap <A-l> <C-w>l
 
 
+
 nnoremap <c-P> <cmd>lua require('fzf-lua').files()<CR>
-" nnoremap <C-p> :FZF<CR>
-" let g:fzf_action = {
-"   \ 'ctrl-t': 'tab split',
-"   \ 'ctrl-s': 'split',
-"   \ 'ctrl-v': 'vsplit'
-"   \}
-" " used to ignore gitignore files
-" let $FZF_DEFAULT_COMMAND = 'ag -g ""'
+
 
 
 " add map to clipboard
@@ -120,9 +99,6 @@ set scrolloff=5             " Minimal number of screen lines to keep above and b
 
 
 
-" let g:coc_global_extensions = ['coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-tsserver']
-
-
 " move between panes to left/bottom/top/right
  nnoremap <C-h> <C-w>h
  nnoremap <C-j> <C-w>j
@@ -137,10 +113,12 @@ set scrolloff=5             " Minimal number of screen lines to keep above and b
 nmap <F9> :TagbarToggle<CR>
 
 " map <leader>q to quit
-nmap <leader>qq :q<CR>
+nmap <leader>qq :qa<CR>
 " map <leader>w to write
 nmap <leader>w :w<CR>
 
+" ----------------------- coc.nvim -----------------------
+"
 " Set completeopt to have a better completion experience
 " set completeopt=menuone,noinsert,noselect
 
@@ -224,7 +202,7 @@ endfunction
 
 
 " Highlight the symbol and its references when holding the cursor.
-set updatetime=200
+set updatetime=150
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Always show the signcolumn, otherwise it would shift the text each time
@@ -389,3 +367,40 @@ let g:mkdp_filetypes = ['markdown']
 " set default theme (dark or light)
 " By default the theme is define according to the preferences of the system
 let g:mkdp_theme = 'dark'
+
+" Configuring lualine in init.vim
+"
+lua << END
+require('lualine').setup()
+END
+
+" ------------ lazyGitConfig ---------------------
+" setup mapping to call :LazyGit
+nnoremap <silent> <leader>gg :LazyGit<CR>
+
+" --------------- toggleterm ---------------------
+"
+lua require("toggleterm").setup{}
+
+autocmd TermEnter term://*toggleterm#*
+      \ tnoremap <silent><F2> <Cmd>exe v:count1 . "ToggleTerm"<CR>
+
+nnoremap <silent><F2> <Cmd>exe v:count1 . "ToggleTerm"<CR>
+inoremap <silent><F2> <Esc><Cmd>exe v:count1 . "ToggleTerm"<CR>
+
+lua << END
+function _G.set_terminal_keymaps()
+  local opts = {buffer = 0}
+  vim.keymap.set('t', '<esc>', [[<C-\><C-n>]], opts)
+  vim.keymap.set('t', 'jk', [[<C-\><C-n>]], opts)
+  vim.keymap.set('t', '<C-h>', [[<Cmd>wincmd h<CR>]], opts)
+  vim.keymap.set('t', '<C-j>', [[<Cmd>wincmd j<CR>]], opts)
+  vim.keymap.set('t', '<C-k>', [[<Cmd>wincmd k<CR>]], opts)
+  vim.keymap.set('t', '<C-l>', [[<Cmd>wincmd l<CR>]], opts)
+  vim.keymap.set('t', '<C-w>', [[<C-\><C-n><C-w>]], opts)
+end
+
+-- if you only want these mappings for toggle term use term://*toggleterm#* instead
+vim.cmd('autocmd! TermOpen term://*toggleterm#*  lua set_terminal_keymaps()')
+END
+
