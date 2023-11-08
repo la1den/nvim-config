@@ -11,8 +11,10 @@ endif
 
 " Theme
 syntax enable
-" colorscheme dracula
-colorscheme catppuccin " catppuccin-latte, catppuccin-frappe, catppuccin-macchiato, catppuccin-mocha
+" colorscheme nightfox
+colorscheme dracula
+" colorscheme catppuccin " catppuccin-latte, catppuccin-frappe, catppuccin-macchiato, catppuccin-mocha
+" colorscheme catppuccin-mocha
 " colorscheme tokyonight
 " colorscheme tokyonight-day
 
@@ -370,8 +372,16 @@ let g:mkdp_theme = 'dark'
 
 " Configuring lualine in init.vim
 "
+"
+" lua require('lualine').setup()
 lua << END
-require('lualine').setup()
+require('lualine').setup {
+  options = {
+    -- ...
+    theme = 'dracula-nvim'
+    -- ...
+  }
+}
 END
 
 " ------------ lazyGitConfig ---------------------
