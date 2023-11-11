@@ -5,8 +5,8 @@ return require('packer').startup(function()
     -- Using Packer:
     use 'Mofiqul/dracula.nvim'
 
-    -- A dark and light Neovim theme written in Lua ported from the Visual Studio Code TokyoNight theme. 
-    use {'folke/tokyonight.nvim'}
+    -- A dark and light Neovim theme written in Lua ported from the Visual Studio Code TokyoNight theme.
+    use { 'folke/tokyonight.nvim' }
 
     -- Soothing pastel theme for (Neo)vim
     use { "catppuccin/nvim", as = "catppuccin" }
@@ -15,7 +15,7 @@ return require('packer').startup(function()
     use "EdenEast/nightfox.nvim" -- Packer
 
     -- True snippet and additional text editing support
-    use {'neoclide/coc.nvim', branch = 'release'}
+    -- use { 'neoclide/coc.nvim', branch = 'release' }
 
 
     -- A file explorer tree for neovim written in lua
@@ -24,22 +24,22 @@ return require('packer').startup(function()
         requires = {
             'nvim-tree/nvim-web-devicons', -- optional, for file icons
         },
-        tag = 'nightly' -- optional, updated every week. (see issue #1193)
+        tag = 'nightly'                    -- optional, updated every week. (see issue #1193)
     }
 
     -- a really handy start page with lots of customizations
-    use {'mhinz/vim-startify'}
+    use { 'mhinz/vim-startify' }
 
 
     -- fzf is a general-purpose command-line fuzzy finder.
     use { 'ibhagwan/fzf-lua' }
 
     -- browse the tags of the current file and get an overview of its structure
-    use {'majutsushi/tagbar'}
+    use { 'majutsushi/tagbar' }
 
     -- Vim plugin for intensely nerdy commenting powers
     -- use {'preservim/nerdcommenter'}
-    use {'tpope/vim-commentary'}
+    use { 'tpope/vim-commentary' }
 
 
     -- install without yarn or npm
@@ -75,11 +75,32 @@ return require('packer').startup(function()
     })
 
     -- A neovim lua plugin to help easily manage multiple terminal windows
-    use {"akinsho/toggleterm.nvim", tag = '*', config = function()
+    use { "akinsho/toggleterm.nvim", tag = '*', config = function()
         require("toggleterm").setup()
-    end}
+    end }
 
+    -- Nvim Treesitter configurations and abstraction layer
+    use {
+        'nvim-treesitter/nvim-treesitter',
+        run = function()
+            local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
+            ts_update()
+        end,
+    }
+
+     -- -- vim match-up: even better % 👊 navigate and highlight matching words 👊 modern matchit and matchparen. Supports both vim and neovim + tree-sitter.
+    use {
+        'andymass/vim-matchup',
+        setup = function()
+            -- may set any options here
+            vim.g.matchup_matchparen_offscreen = { method = "popup" }
+        end
+    }
+
+    -- Indent guides for Neovim 
+    use "lukas-reineke/indent-blankline.nvim"
+
+    -- Packer:
+    use 'Mofiqul/vscode.nvim'
 
 end)
-
-
