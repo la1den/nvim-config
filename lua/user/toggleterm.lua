@@ -15,10 +15,10 @@ vim.cmd([[
 ]])
 
 -- 在普通模式下，按下<F2>键触发ToggleTerm命令
-vim.api.nvim_set_keymap('n', '<F2>', ':<C-U>exe v:count1 . "ToggleTerm"<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<F2>', '<cmd>exe v:count1 . "ToggleTerm"<CR>', { noremap = true, silent = true })
 
 -- 在插入模式下，按下<F2>键触发ToggleTerm命令
-vim.api.nvim_set_keymap('i', '<F2>', '<Esc>:<C-U>exe v:count1 . "ToggleTerm"<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('i', '<F2>', '<Esc><cmd>exe v:count1 . "ToggleTerm"<CR>', { noremap = true, silent = true })
 function _G.set_terminal_keymaps()
   local opts = {buffer = 0}
   vim.keymap.set('t', '<esc>', [[<C-\><C-n>]], opts)
