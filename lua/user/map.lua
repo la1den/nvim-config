@@ -25,4 +25,17 @@ vim.api.nvim_set_keymap('n', '<leader>w', ':<C-U>w<CR>', {noremap = true})
 vim.api.nvim_set_keymap('i', 'jk', '<Esc>', {noremap = true})
 vim.api.nvim_set_keymap('i', 'kj', '<Esc>', {noremap = true})
 
+-- jump tabs mappings
+vim.api.nvim_set_keymap('n', '<a-j>', '<cmd>tabprevious<CR>', {noremap = true})
+vim.api.nvim_set_keymap('n', '<a-k>', '<cmd>tabnext<CR>', {noremap = true})
+vim.api.nvim_set_keymap('i', '<a-j>', '<Esc><cmd>tabprevious<CR>', {noremap = true})
+vim.api.nvim_set_keymap('i', '<a-k>', '<Esc><cmd>tabnext<CR>', {noremap = true})
+vim.api.nvim_set_keymap('t', '<a-j>', '<Esc><cmd>tabprevious<CR>', {noremap = true})
+vim.api.nvim_set_keymap('t', '<a-k>', '<Esc><cmd>tabnext<CR>', {noremap = true})
 
+vim.api.nvim_set_keymap('n', '<Space>', '<Nop>', {noremap = true})
+
+for number = 1, 9 do
+  local mapping = string.format("<Space>%d", number)
+  vim.api.nvim_set_keymap('n', mapping, string.format('<cmd>tabnext %d <CR>', number), { noremap = true })
+end
