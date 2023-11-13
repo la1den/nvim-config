@@ -6,7 +6,7 @@ vim.opt.termguicolors = true
 -- empty setup using defaults
 require("nvim-tree").setup({
     system_open = {
-        cmd = "",
+        cmd = script_path .. "/la1den-xdg-open",
     },
 })
 
