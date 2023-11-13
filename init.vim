@@ -5,7 +5,12 @@ if exists('g:vscode')
     " VSCode extension
 else
     " ordinary Neovim
+    
+    lua require('env')
+
     lua require('plugins')
+
+    lua require('user/packer')
 
     lua require('user/LazyGit')
 
@@ -26,4 +31,5 @@ else
     lua require('user/lualine')
 
     lua require('user/vim-matchup')
+
 endif
