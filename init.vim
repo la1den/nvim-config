@@ -32,4 +32,5 @@ else
 
     lua require('user/vim-matchup')
 
+    lua require('user/hop')
 endif
