@@ -2,22 +2,6 @@ return require('packer').startup(function()
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
 
-    -- Using Packer:
-    use 'Mofiqul/dracula.nvim'
-
-    -- A dark and light Neovim theme written in Lua ported from the Visual Studio Code TokyoNight theme.
-    use { 'folke/tokyonight.nvim' }
-
-    -- Soothing pastel theme for (Neo)vim
-    use { "catppuccin/nvim", as = "catppuccin" }
-
-    -- A highly customizable theme for vim and neovim with support for lsp, treesitter and a variety of plugins.
-    use "EdenEast/nightfox.nvim" -- Packer
-
-    -- True snippet and additional text editing support
-    -- use { 'neoclide/coc.nvim', branch = 'release' }
-
-
     -- A file explorer tree for neovim written in lua
     use {
         'nvim-tree/nvim-tree.lua',
@@ -30,7 +14,6 @@ return require('packer').startup(function()
     -- a really handy start page with lots of customizations
     use { 'mhinz/vim-startify' }
 
-
     -- fzf is a general-purpose command-line fuzzy finder.
     use { 'ibhagwan/fzf-lua' }
 
@@ -41,20 +24,6 @@ return require('packer').startup(function()
     -- use {'preservim/nerdcommenter'}
     use { 'tpope/vim-commentary' }
 
-
-    -- install without yarn or npm
-    use({
-        "iamcco/markdown-preview.nvim",
-        run = function() vim.fn["mkdp#util#install"]() end,
-    })
-
-    -- use {
-    --     'chipsenkbeil/distant.nvim',
-    --     branch = 'v0.3',
-    --     config = function()
-    --         require('distant'):setup()
-    --     end
-    -- }
 
     -- A blazing fast and easy to configure neovim statusline plugin written in pure lua.
     use {
@@ -82,6 +51,7 @@ return require('packer').startup(function()
     -- Nvim Treesitter configurations and abstraction layer
     use {
         'nvim-treesitter/nvim-treesitter',
+
         run = function()
             local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
             ts_update()
@@ -103,4 +73,20 @@ return require('packer').startup(function()
     -- Packer:
     use 'Mofiqul/vscode.nvim'
 
+    -- telecope
+    use {
+        'nvim-telescope/telescope.nvim', tag = '0.1.4',
+        -- or                            , branch = '0.1.x',
+        requires = { {'nvim-lua/plenary.nvim'} }
+    }
+
+    -- hop.nvim
+    use {
+        'phaazon/hop.nvim',
+        branch = 'v2', -- optional but strongly recommended
+        config = function()
+            -- you can configure Hop the way you like here; see :h hop-config
+            require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
+        end
+    }
 end)
