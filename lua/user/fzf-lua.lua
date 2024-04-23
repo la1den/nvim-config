@@ -1,6 +1,6 @@
 require'fzf-lua'.setup {
   grep = {
-      rg_opts="--hidden --column --line-number --no-heading --color=always --smart-case --max-columns=4096 -g \'!.git\' -e",
+      rg_opts="--hidden --column --line-number --no-heading --color=always --follow --smart-case --max-columns=4096 -g \'!.git\' -e",
   },
   files = {
       fd_opts           = "--color=never --type f --hidden --follow --exclude .git --ignore-case"
