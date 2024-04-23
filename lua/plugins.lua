@@ -72,6 +72,13 @@ return require('packer').startup(function()
 
     -- Packer:
     use 'Mofiqul/vscode.nvim'
+    -- packer
+    -- use {
+    --     "askfiy/visual_studio_code",
+    --     -- config = function()
+    --     --     vim.cmd([[colorscheme visual_studio_code]])
+    --     -- end,
+    -- }
 
     -- telecope
     use {
@@ -89,4 +96,18 @@ return require('packer').startup(function()
             require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
         end
     }
+
+    -- fugitive.nvim
+    use {
+        'tpope/vim-fugitive'
+    }
+
+    -- use { 
+    --     'alohaia/fcitx.nvim'
+    -- }
+    
+    use 'h-hg/fcitx.nvim'
+
+    -- Align text interactively
+    use 'echasnovski/mini.nvim'
 end)

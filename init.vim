@@ -6,12 +6,14 @@ if exists('g:vscode')
 else
     " ordinary Neovim
     
+    " -------------- Load first
     lua require('env')
 
     lua require('plugins')
 
     lua require('user/packer')
 
+    " -------------- Load next
     lua require('user/LazyGit')
 
     lua require("user/toggleterm")
@@ -22,7 +24,7 @@ else
 
     lua require('user/fzf-lua')
 
-    lua require("user/vscode-theme")
+    lua require("user/theme")
 
     lua require("user/indent-blankline")
 
@@ -33,4 +35,8 @@ else
     lua require('user/vim-matchup')
 
     lua require('user/hop')
+
+    lua require('user/fcitx-config')
+    
+    lua require('user/mini-align')
 endif
