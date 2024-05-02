@@ -10,6 +10,7 @@ vim.o.backup = false
 vim.o.writebackup = false
 
 vim.o.number = true
+vim.o.numberwidth = 1
 vim.o.showmatch = true
 vim.o.ignorecase = true
 
@@ -39,3 +40,5 @@ vim.o.cursorline = true
 
 --  Minimal number of screen lines to keep above and below the cursor.
 vim.o.scrolloff = 5
+
+
