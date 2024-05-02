@@ -4,7 +4,7 @@ require'fzf-lua'.setup {
   },
   files = {
       fd_opts           = "--color=never --type f --hidden --follow --exclude .git --ignore-case"
-  }
+  },
 
 }
 vim.api.nvim_set_keymap('n', '<c-P>', '<cmd>lua require("fzf-lua").files()<CR>', {noremap = true})
