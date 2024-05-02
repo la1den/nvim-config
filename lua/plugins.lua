@@ -35,13 +35,13 @@ return require('packer').startup(function()
     use { 'tpope/vim-surround' }
 
     -- Plugin for calling lazygit from within neovim.
-    use({
-        "kdheepak/lazygit.nvim",
-        -- optional for floating window border decoration
-        requires = {
-            "nvim-lua/plenary.nvim",
-        },
-    })
+    -- use({
+    --     "kdheepak/lazygit.nvim",
+    --     -- optional for floating window border decoration
+    --     requires = {
+    --         "nvim-lua/plenary.nvim",
+    --     },
+    -- })
 
     -- A neovim lua plugin to help easily manage multiple terminal windows
     use { "akinsho/toggleterm.nvim", tag = '*', config = function()
@@ -106,8 +106,13 @@ return require('packer').startup(function()
     --     'alohaia/fcitx.nvim'
     -- }
     
+    -- automatic switch input method from normal mode to insert mode
     use 'h-hg/fcitx.nvim'
 
     -- Align text interactively
     use 'echasnovski/mini.nvim'
+
+    -- A small automated session manager for Neovim
+    use 'rmagatti/auto-session'
+
 end)
