@@ -5,6 +5,7 @@ vim.g.loaded_netrwPlugin = 1
 vim.opt.termguicolors = true
 -- empty setup using defaults
 require("nvim-tree").setup({
+    open_on_setup_file = true,
     system_open = {
         cmd = script_path .. "/la1den-xdg-open",
     },
