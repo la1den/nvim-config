@@ -115,4 +115,6 @@ return require('packer').startup(function()
     -- A small automated session manager for Neovim
     use 'rmagatti/auto-session'
 
+    -- A Vim plugin which shows git diff markers in the sign column and stages/previews/undoes hunks and partial hunks.
+    use 'airblade/vim-gitgutter'
 end)
